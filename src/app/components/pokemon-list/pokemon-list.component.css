@@ -1,0 +1,61 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+}
+
+mat-card-title {
+  text-transform: capitalize;
+}
+
+.pokemon-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  padding-top: 1em;
+}
+
+.pokemon-card {
+    color: auto;
+    background-color:#fffefc;
+}
+
+.mat-card-content {
+  border-top : 1px solid #cccccc;
+}
+
+.mat-paginator {
+  padding: 2em 0;
+}
+.loading {
+  position: fixed;
+  z-index: 999;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.pokemon-card:hover {
+ background-color: #eee;
+ cursor: pointer;
+}
+.controls{
+  padding: 50px 16px;
+}
+.search-input {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 5px 2px 20px;
+  width: 270px;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  background: #eee;
+  outline: none !important;
+}
