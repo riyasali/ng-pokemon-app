@@ -17,7 +17,9 @@
 .first-div {
     width: 20%;
 }
-
+.poke-image {
+    height: 200px;
+}
 .second-div {
     width: 30%
 }

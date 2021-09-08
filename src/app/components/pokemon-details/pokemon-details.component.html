@@ -5,11 +5,11 @@
     <div class="content">
 
         <div class="first-div">
-            <img src="{{pokemonData.sprites.front_default}}" alt=" photo of {{pokemonData.name}}">
+            <img class="poke-image" src="{{pokemonData.sprites.front_default}}" alt=" photo of {{pokemonData.name}}">
         </div>
 
         <div class="second-div">
-            <h2>{{pokemonData.name}}</h2>
+            <h3>{{pokemonData.name}}</h3>
             <p>Height: {{pokemonData.height}}</p>
             <p>Weight: {{pokemonData.weight}}</p>
             <p>Abilities</p>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="third-div">
-            <p>Moves</p>
+            <h3>Moves</h3>
             <ul id="moves">
                 <li *ngFor="let moves of pokemonData.moves"> * {{moves.move.name}}</li>
             </ul>
