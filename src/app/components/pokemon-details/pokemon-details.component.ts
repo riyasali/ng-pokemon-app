@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokemon-details.component.html',
   styleUrls: ['./pokemon-details.component.css']
 })
-export class PokemonDetailsComponent implements OnInit {
-
+export class PokemonDetailsComponent implements OnInit, OnDestroy {
+  getDetailsSubscription: Subscription;
+  subscriptions: Subscription[] = [];
   loaded = false;
    tiles: any[] = [
     {text: 'One', cols: 1, rows: 2, color: 'lightblue'},
@@ -26,7 +28,7 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   getPokemonDetails(pokemonId) {
-    this.pokemonService.getPokemonDetails(pokemonId).subscribe(
+    this.getDetailsSubscription = this.pokemonService.getPokemonDetails(pokemonId).subscribe(
       response => {
         console.log(response);
       },
@@ -34,7 +36,10 @@ export class PokemonDetailsComponent implements OnInit {
         console.log(error);
       }
 
-    )
+    );
+    this.subscriptions.push(this.getDetailsSubscription);
   }
-
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
 }
