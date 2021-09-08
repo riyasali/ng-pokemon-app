@@ -1,6 +1,4 @@
-.content {
-    padding: 16px;
-}
+
 
 .content > mat-card {
     width: 200px;
@@ -46,8 +44,13 @@ mat-card-title {
  background-color: #eee;
  cursor: pointer;
 }
-.controls{
-  padding: 50px 16px;
+.pokemon-list{
+  padding-top:50px;
+}
+
+.search-box {
+  padding-bottom: 20px;
+  text-align: right;
 }
 .search-input {
   font-size: 14px;
@@ -58,4 +61,11 @@ mat-card-title {
   border-bottom: 1px solid #ccc;
   background: #eee;
   outline: none !important;
+  text-align: left;
+}
+
+.no-data {
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

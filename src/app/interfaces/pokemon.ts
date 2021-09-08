@@ -10,7 +10,6 @@ export interface Results {
 
 export interface PokemonListAPI {
     count: number;
-    next: string;
     results: Results[];
 }
 

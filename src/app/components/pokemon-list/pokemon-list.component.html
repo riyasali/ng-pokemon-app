@@ -1,67 +1,48 @@
-<header>
-    <mat-toolbar color="primary">
-        <span>Pokemon</span>
-        
-    </mat-toolbar>
-</header>
-<div class="loading" *ngIf="!loaded">
-    <mat-progress-spinner
-    class="example-margin"
-    [color]="color"
-    [mode]="mode"
-    [value]="value"> Loading...
-</mat-progress-spinner>
+<app-header></app-header>
+<div class="loading" *ngIf="!isProcessing">
+    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value"> Loading...
+    </mat-progress-spinner>
 </div>
-<section class="controls">
-    <div class="search-box">
-        <input
-          matInput
-          class="search-input"
-          type="text"
-          [(ngModel)]="query"
-          placeholder="Enter pokemon name or ability"
-          autocomplete="off"
-          (ngModelChange)="searchEvent(query)"
-        />
-        <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
-            <mat-icon>clear</mat-icon>
-          </button>
-      </div>
-</section>
-<section>
-
-    <div class="content" *ngIf="loaded">
+<section class="pokemon-list">
+    <div class="content" *ngIf="pokeMonDataList.length; else noData">
+        <div class="search-box">
+            <input matInput class="search-input" type="text" [(ngModel)]="query" placeholder="Enter pokemon name or ability"
+                autocomplete="off" />
+            <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%"
-             *ngFor="let pokemon of pokeMonDataList | search: query">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let pokemon of pokeMonDataList | search: query">
                 <mat-card class="pokemon-card">
-                    <mat-card-header>
-                        <mat-card-title>{{pokemon.name}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="{{pokemon.sprites.front_default}}" alt=" photo of {{pokemon.name}}">
-                    <mat-card-content>
-                        <div class="pokemon-info">
-                            <div>Height: <b>{{pokemon.height}}</b></div>
-                            <div>Weight: <b>{{pokemon.weight}}</b></div>
-                        </div>
-                        <div class="abilities">
-                            <p>Abilities</p>
-                            <ul>
-                                <li *ngFor="let abilities of pokemon.abilities"> {{abilities.ability.name}}</li>
-                            </ul>
-                        </div>
-                    </mat-card-content>
+                    <a href="javascript:void(0);" [routerLink]="['/pokemon',pokemon.id]">
+                        <mat-card-header>
+                            <mat-card-title>{{pokemon.name}}</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="{{pokemon.sprites.front_default}}" alt=" photo of {{pokemon.name}}">
+                        <mat-card-content>
+                            <div class="pokemon-info">
+                                <div>Height: <b>{{pokemon.height}}</b></div>
+                                <div>Weight: <b>{{pokemon.weight}}</b></div>
+                            </div>
+                            <div class="abilities">
+                                <p>Abilities</p>
+                                <ul>
+                                    <li *ngFor="let abilities of pokemon.abilities"> {{abilities.ability.name}}</li>
+                                </ul>
+                            </div>
+                        </mat-card-content>
+                    </a>
                 </mat-card>
             </div>
         </div>
 
-        <mat-paginator #paginator 
-            [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" 
-            [showFirstLastButtons]="true"
-            [length]="totalCount" 
-            [pageIndex]="currentPage" 
-            (page)="pageEvent = handlePage($event)">
+        <mat-paginator #paginator [pageSize]="limit" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true"
+            [length]="totalCount" [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
         </mat-paginator>
     </div>
+    <ng-template #noData>
+        <p class="no-data">{{noDataMessage}}</p>
+    </ng-template>
 
 </section>
