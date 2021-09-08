@@ -1,0 +1,32 @@
+.mat-grid-list{
+    margin-top: 24px;
+}
+.image-tile{
+    background: #ccc;
+}
+
+.mat-grid-tile {
+    display: inline-block;
+}
+
+.content > div{
+    display: inline-block;
+}
+
+
+.first-div {
+    width: 20%;
+}
+
+.second-div {
+    width: 30%
+}
+
+.third-div {
+    width: 50%
+}
+
+ul#moves li {
+    display: inline;
+    list-style-type: circle;
+}
