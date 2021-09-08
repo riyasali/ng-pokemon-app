@@ -10,16 +10,21 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatInputModule} from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
 import { SearchPipe } from './pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
+import { HeaderComponent } from './shared/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
-    SearchPipe
+    SearchPipe,
+    PokemonDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

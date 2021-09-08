@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<section>
+    <div class="content" >
+        <a href="javascript:void(0);" [routerLink]="['/pokemon']">Back to List</a>
+
+        <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                [style.background]="tile.color">
+              {{dfdf}}
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+</section>

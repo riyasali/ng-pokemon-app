@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { PokemonDetails, PokemonListAPI } from '../../interfaces/pokemon';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, Subscription } from 'rxjs';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable, forkJoin } from 'rxjs';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, OnDestroy {
   offset = 0;
   limit = 20;
   isProcessing = false;
@@ -20,6 +20,9 @@ export class PokemonListComponent implements OnInit {
   currentPage = 0;
   query: string;
   noDataFound = 'Unable to fetch pokemons';
+  getListSubscription: Subscription;
+  getDetailsSubscription: Subscription;
+  subscriptions: Subscription[] = [];
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
@@ -32,7 +35,7 @@ export class PokemonListComponent implements OnInit {
       limit: this.limit,
       offset: this.offset,
     }
-    this.pokemonService.getPokemon(pagination).subscribe(
+    this.getListSubscription = this.pokemonService.getPokemon(pagination).subscribe(
       (data: PokemonListAPI) => {
         this.isProcessing = true;
         if (data && data.results && data.results.length) {
@@ -46,15 +49,18 @@ export class PokemonListComponent implements OnInit {
             detailsBatch.push(this.pokemonService.getPokemonDetails(pokemon.id));
 
           });
-          return forkJoin(detailsBatch).subscribe((data: PokemonDetails[]) => {
+          this.getDetailsSubscription = forkJoin(detailsBatch).subscribe((data: PokemonDetails[]) => {
             this.pokeMonDataList = data;
           });
+          this.subscriptions.push(this.getDetailsSubscription);
+          return this.getDetailsSubscription;
 
         }
       },
       (error) => {
         this.isProcessing = true;
-      })
+      });
+    this.subscriptions.push(this.getListSubscription);
   }
 
   handlePage(paginator) {
@@ -63,4 +69,9 @@ export class PokemonListComponent implements OnInit {
     this.currentPage = paginator.pageIndex;
     this.getPokemonList();
   }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
+
 }
