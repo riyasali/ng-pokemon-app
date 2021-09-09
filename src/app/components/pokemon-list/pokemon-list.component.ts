@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { PokemonDetails, PokemonListAPI } from '../../interfaces/pokemon';
 import { Observable, forkJoin, Subscription } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -23,6 +23,8 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   getListSubscription: Subscription;
   getDetailsSubscription: Subscription;
   subscriptions: Subscription[] = [];
+  sortKey = 'id';
+  pokemonImageBaseUrl = environment.pokemonImageUrl;
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {

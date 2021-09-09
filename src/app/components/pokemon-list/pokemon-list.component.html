@@ -5,25 +5,48 @@
 </div>
 <section class="pokemon-list">
     <div class="content" *ngIf="pokeMonDataList.length; else noData">
-        <div class="search-box">
-            <input matInput class="search-input" type="text" [(ngModel)]="query" placeholder="Enter pokemon name or ability"
-                autocomplete="off" />
-            <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
-                <mat-icon>clear</mat-icon>
-            </button>
-        </div>
+        <mat-grid-list class="control-list" cols="4" rowHeight="80px">
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Sort By</mat-label>
+                    <select matNativeControl [(ngModel)]="sortKey">
+                        <option value="id">id</option>
+                        <option value="name">Name</option>
+                        <option value="height">Height</option>
+                        <option value="weight">Weight</option>
+                    </select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput class="" type="text" [(ngModel)]="query" placeholder="Enter pokemon name or ability"
+                        autocomplete="off">
+                </mat-form-field>
+                <button *ngIf="query" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
-            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let pokemon of pokeMonDataList | search: query">
+            <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"
+                *ngFor="let pokemon of pokeMonDataList | sortBy: {property: sortKey, direction: 1} | search: query">
                 <mat-card class="pokemon-card">
-                    <a href="javascript:void(0);" [routerLink]="['/pokemon',pokemon.id]">
+                    <a href="javascript:void(0);" alt="Showing card of {{pokemon.name}}"
+                        [routerLink]="['/pokemon',pokemon.id]">
                         <mat-card-header>
                             <mat-card-title>{{pokemon.name}}</mat-card-title>
+                            <mat-card-subtitle>
+                               #{{pokemon.id}}
+                            </mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image src="{{pokemon.sprites.front_default}}" alt=" photo of {{pokemon.name}}">
+                        <img mat-card-image src="{{pokemonImageBaseUrl}}/{{pokemon.id}}.svg"
+                            alt=" photo of {{pokemon.name}}">
                         <mat-card-content>
                             <div class="pokemon-info">
-                                <div>Height: <b>{{pokemon.height}}</b></div>
-                                <div>Weight: <b>{{pokemon.weight}}</b></div>
+                                <div>Height: <b>{{pokemon.height/10}} m</b></div>
+                                <div>Weight: <b>{{pokemon.weight/10}} kg</b></div>
                             </div>
                             <div class="abilities">
                                 <p>Abilities</p>
@@ -32,6 +55,14 @@
                                 </ul>
                             </div>
                         </mat-card-content>
+                        <mat-card-actions>
+                            <mat-chip-list aria-label="Fish selection" *ngIf="pokemon.types">
+                                <ng-container *ngFor="let types of pokemon.types">
+                                    <mat-chip class="chip-{{types.type.name}}">{{types.type.name}}</mat-chip>
+                                </ng-container>
+                            </mat-chip-list>
+                        </mat-card-actions>
+                        
                     </a>
                 </mat-card>
             </div>

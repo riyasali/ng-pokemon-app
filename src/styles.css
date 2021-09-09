@@ -1,8 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%;
+    background-color: #f2fcff; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .content {
     padding: 16px;
+}
+.mat-grid-tile .mat-figure {
+    justify-content: left !important ;
+    align-items: flex-start !important;
+  }
+  .mat-card-content {
+    border-top : 1px solid #cccccc;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px;
+  }
+  .mat-card-actions{
+    padding: 2px 12px !important;
+    margin: 0px !important;
+  }
+  .mat-standard-chip {
+    margin: 1px 6px;
+    padding: 0px 10px;
+    font-size: 9px;
+    min-height: 22px !important;
+    color: #fff !important;
+  }
+  .mat-chip-list-wrapper{
+      justify-content: center;
+  }
+  .chip-grass{
+      background-color: #7c5 !important;
+  }
+  .chip-poison{
+    background-color: #a59 !important;
+}
+.chip-water{
+    background-color: #39f !important;
+}
+.chip-fire{
+    background-color: #f42 !important;
+}
+.chip-flying{
+    background-color: #89f !important;
+}
+.chip-bug{
+    background-color: #ab2 !important;
+}
+.chip-normal{
+    background-color: #ccc !important;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff !important;
 }

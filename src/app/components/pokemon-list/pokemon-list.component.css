@@ -4,7 +4,7 @@
     width: 200px;
 }
 
-mat-card-title {
+.mat-card-title {
   text-transform: capitalize;
 }
 
@@ -14,14 +14,10 @@ mat-card-title {
   font-size: 1em;
   padding-top: 1em;
 }
-
-.pokemon-card {
-    color: auto;
-    background-color:#fffefc;
-}
-
-.mat-card-content {
-  border-top : 1px solid #cccccc;
+.mat-card-image{
+  width: calc(60% + 32px);
+  margin: 0 16px 16px 28px;
+  height:120px;
 }
 
 .mat-paginator {
@@ -39,7 +35,12 @@ mat-card-title {
   width: 50px;
   height: 50px;
 }
-
+.pokemon-card {
+  color: auto;
+  background-color:#fffefc;
+  padding:12px;
+  min-height: 319px;
+}
 .pokemon-card:hover {
  background-color: #eee;
  cursor: pointer;
@@ -47,18 +48,28 @@ mat-card-title {
 .pokemon-list{
   padding-top:50px;
 }
-
+.controls-div{
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+}
 .search-box {
   padding-bottom: 20px;
-  text-align: right;
+  text-align: left;
+}
+.sorter-box > .mat-form-field-wrapper{
+  padding-bottom: 21px;
+}
+.mat-grid-tile .mat-figure {
+  justify-content: left !important ;
+  align-items: flex-start !important;
 }
 .search-input {
   font-size: 14px;
   font-weight: bold;
   padding: 2px 5px 2px 20px;
   width: 270px;
-  padding: 16px;
-  border-bottom: 1px solid #ccc;
+  padding: 21px 16px;
+  border-bottom: 1px solid #7e7878;
   background: #eee;
   outline: none !important;
   text-align: left;
@@ -71,4 +82,17 @@ mat-card-title {
 }
 a {
   text-decoration: none;
+  color: #000;
+}
+.control-list{
+  margin-bottom: 24px;
+  border-bottom: 1px solid #ccc;
+}
+.mat-form-field{
+  width: 300px;
+}
+.mat-icon-button{
+  margin-left: -50px;
+    /* line-height: 4; */
+    margin-top: 12px;
 }
