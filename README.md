@@ -3,6 +3,8 @@ Responsive Pokemon web app that supports Mobile, Tablet and Desktop devices. Uti
 
 ![image](https://user-images.githubusercontent.com/4386784/132779042-8be3421b-5d41-42dc-bdeb-03cdd58ffbe6.png)
 
+![image](https://user-images.githubusercontent.com/4386784/132779331-75dac356-9736-4c7a-9a51-6404ea615d73.png)
+
 
 # Setting up the environment:
 1. Install Node.js and use node -v to check version.
