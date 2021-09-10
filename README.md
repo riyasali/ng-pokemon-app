@@ -17,7 +17,10 @@ Responsive Pokemon web app that supports Mobile, Tablet and Desktop devices. Uti
     * Abilities
 2. Paginated list that support number of cards per page, navigate page by page
 3. Search pokemons by name or ability
-4. View the details of the selected pokemon (Incomplete)
+4. Sort Pokemons by name, id, height or weight
+5. View the details of the selected pokemon
+6. Unit test
+7. Linting
 
 ## Development server
 
