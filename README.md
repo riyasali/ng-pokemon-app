@@ -1,6 +1,9 @@
 # PokemonApp
 Responsive Pokemon web app that supports Mobile, Tablet and Desktop devices. Utilizing Poke API - https://pokeapi.co/
 
+![image](https://user-images.githubusercontent.com/4386784/132779042-8be3421b-5d41-42dc-bdeb-03cdd58ffbe6.png)
+
+
 # Setting up the environment:
 1. Install Node.js and use node -v to check version.
 2. Install Angular CLI as npm install -g @angular/cli
