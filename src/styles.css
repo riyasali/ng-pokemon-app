@@ -54,3 +54,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: #fff !important;
 }
+.mat-paginator{
+    margin-top: 12px;
+}
+.pb-0{
+    padding-bottom: 0px !important;
+}
+.mat-tab-label{
+    min-width: 200px !important;
+}

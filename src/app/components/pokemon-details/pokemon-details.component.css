@@ -9,8 +9,9 @@
     display: inline-block;
 }
 
-.content > div{
-    display: inline-block;
+.content{
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -31,4 +32,75 @@
 ul#moves li {
     display: inline;
     list-style-type: circle;
+}
+.details-card{
+    width: 70%;
+}
+.mat-card-image{
+    width: 80%;
+    padding: 10px;
+    margin-top: 0px !important;
+}
+.image-card{
+    width: 100%;
+}
+.upper-link{
+    display: flex;
+    justify-content: center;
+}
+.upper-link > div{
+    width: 70%;
+    padding: 0;
+}
+.go-back-link{
+    background: #f2fcff;
+    box-shadow: none;
+    color: #3f51b5;
+}
+.poke-name{
+    display: inline-block;
+    /* margin-top: 17px; */
+    text-transform: capitalize;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: bold;
+    color: #444;
+    margin-left: 6px;
+    line-height: 1.5px;
+}
+.block{
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #ddd;
+}
+p{
+    line-height: 1px;
+
+}
+p.title{
+    font-weight: bold;
+    line-height: 1px;
+}
+.spaced-items-container{
+    display: flex;
+    justify-content: space-between;
+    line-height: 1px;
+}
+p.right{
+    color: #787878;
+    font-weight: 600;
+}
+.spaced-items-container.start{
+    justify-content: start;
+}
+.start > p {
+    margin-right: 12px;;
+}
+.stat-item{
+    padding: 8px 12px;
+}
+.stat-name{
+    text-transform: capitalize;
+}
+.mat-progress-bar{
+    height: 8px;
 }

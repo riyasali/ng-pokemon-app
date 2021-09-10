@@ -5,29 +5,27 @@
 </div>
 <section class="pokemon-list">
     <div class="content" *ngIf="pokeMonDataList.length; else noData">
-        <mat-grid-list class="control-list" cols="4" rowHeight="80px">
-            <mat-grid-tile>
-                <mat-form-field appearance="fill">
-                    <mat-label>Sort By</mat-label>
-                    <select matNativeControl [(ngModel)]="sortKey">
-                        <option value="id">id</option>
-                        <option value="name">Name</option>
-                        <option value="height">Height</option>
-                        <option value="weight">Weight</option>
-                    </select>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Search</mat-label>
-                    <input matInput class="" type="text" [(ngModel)]="query" placeholder="Enter pokemon name or ability"
-                        autocomplete="off">
-                </mat-form-field>
-                <button *ngIf="query" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
-                    <mat-icon>clear</mat-icon>
-                </button>
-            </mat-grid-tile>
-        </mat-grid-list>
+
+        <div class="pokemon-list-filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Sort By</mat-label>
+                <select matNativeControl [(ngModel)]="sortKey">
+                    <option value="id">id</option>
+                    <option value="name">Name</option>
+                    <option value="height">Height</option>
+                    <option value="weight">Weight</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Search</mat-label>
+                <input matInput class="" type="text" [(ngModel)]="query" placeholder="Enter pokemon name or ability"
+                    autocomplete="off">
+            </mat-form-field>
+            <button *ngIf="query" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="query=''">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
 
         <div fxLayout="row wrap" fxLayoutGap="16px grid">
             <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"
@@ -38,7 +36,7 @@
                         <mat-card-header>
                             <mat-card-title>{{pokemon.name}}</mat-card-title>
                             <mat-card-subtitle>
-                               #{{pokemon.id}}
+                                #{{pokemon.id}}
                             </mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="{{pokemonImageBaseUrl}}/{{pokemon.id}}.svg"
@@ -62,7 +60,7 @@
                                 </ng-container>
                             </mat-chip-list>
                         </mat-card-actions>
-                        
+
                     </a>
                 </mat-card>
             </div>

@@ -21,6 +21,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import {MatChipsModule} from '@angular/material/chips';
     FormsModule,
     MatIconModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

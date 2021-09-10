@@ -10,7 +10,6 @@ import { PokemonDetails, PokemonListAPI } from '../interfaces/pokemon';
 })
 export class PokemonService {
   PokemonListAPI: any;
-  pokeSpeciesAPI: any;
 
   constructor(private http: HttpClient) {
     this.PokemonListAPI = environment.pokemonListURL;
@@ -35,10 +34,6 @@ export class PokemonService {
       .get<PokemonDetails>(`${this.PokemonListAPI}/${id}`);
   }
 
-
-  /**
-   * Handles any request error
-   */
   private errorHandler(error: HttpErrorResponse) {
     return throwError('Something bad happened; please try again later.');
  } 

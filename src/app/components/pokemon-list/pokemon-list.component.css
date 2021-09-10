@@ -3,6 +3,9 @@
 .content > mat-card {
     width: 200px;
 }
+.mat-form-field {
+  margin-left: 10px;
+}
 
 .mat-card-title {
   text-transform: capitalize;
@@ -39,7 +42,7 @@
   color: auto;
   background-color:#fffefc;
   padding:12px;
-  min-height: 319px;
+  min-height: 369px;
 }
 .pokemon-card:hover {
  background-color: #eee;

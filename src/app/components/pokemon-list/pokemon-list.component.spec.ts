@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, throwError } from 'rxjs';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
+import { SortPipe } from 'src/app/pipes/sort.pipe';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 import { PokemonListComponent } from './pokemon-list.component';
@@ -52,7 +53,7 @@ describe('PokemonListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [PokemonListComponent, SearchPipe],
+      declarations: [PokemonListComponent, SearchPipe, SortPipe],
       providers: [
         { provide: PokemonService, useClass: MockPokemonService }
       ]

@@ -1,10 +1,82 @@
 <app-header></app-header>
 
-<section>
-    <a href="javascript:void(0);" [routerLink]="['/pokemon']">Back to List</a>
-    <div class="content">
+<section *ngIf="pokemonData">
+    <div class="upper-link">
+        <div>
 
-        <div class="first-div">
+            <a class="go-back-link" mat-stroked-button mat-fab href="javascript:void(0);" [routerLink]="['/pokemon']">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+            <p class="poke-name">
+                {{pokemonData.name}}
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <mat-card class="details-card pb-0">
+            <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+
+                    <img mat-card-image src="{{pokemonImageBaseUrl}}/{{pokemonData.id}}.svg"
+                        alt=" photo of {{pokemonData.name}}">
+
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-tab-group>
+                        <mat-tab label="Profile">
+                            <div class="block first">
+                                <p class="title">Description</p>
+                                <p class="value">sdszdsdszd</p>
+                            </div>
+                            <div class="block">
+                                <p class="title">Physical</p>
+                                <div class="spaced-items-container">
+                                    <p class="value left inline">Height</p>
+                                    <p class="value right inline">{{pokemonData.height/10}} m</p>
+                                </div>
+                                <div class="spaced-items-container">
+                                    <p class="value left inline">Weight</p>
+                                    <p class="value right inline">{{pokemonData.weight/10}} kg</p>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <p class="title">Abilities</p>
+                                <div class="spaced-items-container start">
+                                    <p class="value right inline" *ngFor="let abilities of pokemonData.abilities">
+                                        {{abilities.ability.name}}</p>
+                                </div>
+
+                            </div>
+                            <div class="block">
+                                <p class="title">Types</p>
+                                <div class="spaced-items-container start">
+                                    <p class="value right inline" *ngFor="let types of pokemonData.types">
+                                        {{types.type.name}}</p>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Stats" >
+                            <div class="stat-item" *ngFor="let statItem of pokemonData.stats">
+                                <p class="stat-name">
+                                    {{statItem.stat.name}}
+                                </p>
+                                <div class="stat-bar">
+                                    <mat-progress-bar 
+                                    class="example-margin" 
+                                    color="primary" 
+                                    mode="determinate" 
+                                    value="{{statItem.base_stat}}"
+                                    bufferValue="bufferValue">
+                                    </mat-progress-bar>
+                                </div>
+                            </div>
+                            
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card>
+        <!-- <div class="first-div">
             <img class="poke-image" src="{{pokemonData.sprites.front_default}}" alt=" photo of {{pokemonData.name}}">
         </div>
 
@@ -24,6 +96,6 @@
             <ul id="moves">
                 <li *ngFor="let moves of pokemonData.moves"> * {{moves.move.name}}</li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </section>
